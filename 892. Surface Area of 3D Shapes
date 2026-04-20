@@ -1,0 +1,21 @@
+class Solution:
+    def surfaceArea(self, grid):
+        
+        surface = 0
+        n = len(grid)
+        
+        for i in range(n):
+            for j in range(len(grid[0])):
+                
+                h = grid[i][j]
+                
+                if h > 0:
+                    surface += 4 * h + 2
+                
+                if i > 0:
+                    surface -= 2 * min(h, grid[i-1][j])
+                
+                if j > 0:
+                    surface -= 2 * min(h, grid[i][j-1])
+        
+        return surface
